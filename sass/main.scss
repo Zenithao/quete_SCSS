@@ -1,0 +1,42 @@
+@mixin createRing($color, $size) {
+    border-radius: 100px;
+    border: $size / 10 solid $color;
+    filter: drop-shadow($size /20 $size /20 $size /20 darken($color, 10%));
+    height: $size;
+    width: $size;
+}
+
+@for $i from 1 through 6 {
+    .ring-#{$i} {
+        @include createRing(black, 30px + $i * 10px);
+        margin-left: -$i * 6px;
+        border: $i * 1.2px solid black;
+    }
+}
+
+.big-yellow-ring {
+    @include createRing(yellow, 150px);
+}
+
+.small-orange-ring {
+    @include createRing(orange, 35px);
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    .row {
+        display: flex;
+        align-items: center;
+        margin: 30px 0;
+    }
+    
+    h2 {
+        margin: 0 5px;
+    }
+}
